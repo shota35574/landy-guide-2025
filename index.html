@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מדריך: איך ליצור דף נחיתה עם Landy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Assistant', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            background: linear-gradient(135deg, #4A90E2 0%, #2E5C8A 100%);
+            color: #2c3e50;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: fadeIn 0.6s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        header {
+            background: linear-gradient(135deg, #4A90E2 0%, #2E5C8A 100%);
+            padding: 40px;
+            margin: -40px -40px 40px -40px;
+            border-radius: 16px 16px 0 0;
+            color: white;
+        }
+        
+        h1 {
+            font-size: 2.2em;
+            color: white;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .intro {
+            background: linear-gradient(135deg, #FFA500 0%, #FF8C00 100%);
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 12px;
+            color: white;
+            box-shadow: 0 5px 15px rgba(255, 165, 0, 0.3);
+        }
+        
+        .intro h3 {
+            color: white;
+        }
+        
+        h2 {
+            color: #4A90E2;
+            font-size: 1.6em;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #4A90E2;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            right: 0;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #4A90E2, #2E5C8A);
+        }
+        
+        h3 {
+            color: #34495e;
+            font-size: 1.3em;
+            margin: 30px 0 15px 0;
+        }
+        
+        .step {
+            background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(74, 144, 226, 0.3);
+        }
+        
+        .step-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #4A90E2 0%, #2E5C8A 100%);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            margin-left: 10px;
+            box-shadow: 0 3px 10px rgba(74, 144, 226, 0.4);
+        }
+        
+        .tip {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 12px;
+            border-right: 5px solid #f39c12;
+            box-shadow: 0 4px 15px rgba(252, 182, 159, 0.3);
+        }
+        
+        .tip strong {
+            color: #d68910;
+        }
+        
+        .important {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 12px;
+            border-right: 5px solid #e17055;
+            box-shadow: 0 4px 15px rgba(253, 203, 110, 0.3);
+        }
+        
+        .important strong {
+            color: #d63031;
+        }
+        
+        .cta {
+            background: linear-gradient(135deg, #4A90E2 0%, #2E5C8A 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            border-radius: 16px;
+            margin: 40px 0;
+            box-shadow: 0 8px 30px rgba(74, 144, 226, 0.4);
+        }
+        
+        .cta h2 {
+            color: white;
+            border: none;
+            margin: 0 0 15px 0;
+        }
+        
+        .cta h2::after {
+            display: none;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #FFA500 0%, #FF8C00 100%);
+            color: white;
+            padding: 20px 60px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.3em;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 25px rgba(255, 165, 0, 0.4);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.08);
+            box-shadow: 0 10px 40px rgba(255, 165, 0, 0.6);
+            background: linear-gradient(135deg, #FF8C00 0%, #FFA500 100%);
+        }
+        
+        .disclosure {
+            font-size: 0.65em;
+            color: #95a5a6;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ecf0f1;
+            font-style: italic;
+            opacity: 0.7;
+        }
+        
+        ul {
+            margin: 15px 0 15px 30px;
+        }
+        
+        li {
+            margin: 10px 0;
+            position: relative;
+            padding-right: 25px;
+        }
+        
+        li::before {
+            content: '✓';
+            position: absolute;
+            right: 0;
+            color: #4A90E2;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .author {
+            font-style: italic;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>איך ליצור דף נחיתה ממיר עם Landy תוך 15 דקות</h1>
+            <p class="author">מאת שחר קולי</p>
+        </header>
+
+        <div class="intro">
+            <h3>היי חברים!</h3>
+            <p>אני יודע מה אתם עוברים - רוצים לבדוק מוצר חדש, אבל לפני זה צריך להשקיע אלפי שקלים על קופירייטר ומעצב, ולחכות שבועיים עד שהדף מוכן. זה היה גם הסיפור שלי עד שמצאתי את Landy.</p>
+            <p><strong>במדריך הזה אני אראה לכם איך ליצור דף נחיתה מקצועי וממיר תוך 15 דקות, גם בלי ידע בעיצוב או קופירייטינג.</strong></p>
+        </div>
+
+        <h2>למה Landy שונה מכל כלי AI אחר?</h2>
+        <p>רוב הכלים זורקים לך קופי גנרי שמרגיש רובוטי. Landy עושה משהו אחר לגמרי:</p>
+        <ul>
+            <li><strong>מחקר שפת לקוח אמיתי</strong> - הכלי נכנס לפורומים ייעודיים ובודק איך האווטאר שלך באמת מדבר, מה הכאבים שלו, מה הוא מחפש</li>
+            <li><strong>קופי ממיר</strong> - לא סתם משפטים יפים, אלא טקסט שמבוסס על מה שהלקוחות שלך רוצים לשמוע</li>
+            <li><strong>הכל במקום אחד</strong> - עיצוב, תמונות, חיבור לסליקה, איסוף לידים, חיבור ל-CRM</li>
+        </ul>
+
+        <h2>המדריך המלא - צעד אחר צעד</h2>
+
+        <div class="step">
+            <h3><span class="step-number">1</span> הרשמה והתחלה</h3>
+            <p>נכנסים לאתר של Landy ומתחילים את התהליך. יש להם ניסיון חינם כך שאפשר לבדוק לפני שמתחייבים לכלום.</p>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">2</span> ענו על השאלות בצורה ממוקדת</h3>
+            <p>הכלי ישאל אתכם כמה שאלות על המוצר/שירות שלכם. <strong>זה השלב הכי חשוב!</strong></p>
+        </div>
+
+        <div class="tip">
+            <strong>💡 טיפ מהשטח:</strong> ה-AI עוזר, אבל גם חשוב לתת מחשבה. ככל שתהיו יותר ממוקדים במה שאתם רוצים, תקבלו את מה שאתם צריכים באופן הטוב ביותר. אל תזרקו תשובות גנריות - תחשבו על הלקוח שלכם, מה הכאב האמיתי שלו, מה התוצאה שהוא רוצה להשיג.
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">3</span> המתינו שהכלי יעשה את המחקר</h3>
+            <p>עכשיו זה הקסם - Landy יוצא לפורומים רלוונטיים, "מצטט" לאווטאר שלכם בשיחות אמיתיות, ומבין:</p>
+            <ul>
+                <li>מהם הכאבים האמיתיים</li>
+                <li>מהן התוצאות שהאווטאר רוצה להשיג</li>
+                <li>מהן האמונות המגבילות שלו</li>
+                <li>איך הוא באמת מדבר</li>
+            </ul>
+            <p>התהליך הזה לוקח כמה דקות.</p>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">4</span> קבלו את הדף המוכן</h3>
+            <p>תקבלו דף נחיתה מלא עם:</p>
+            <ul>
+                <li>קופי שכתוב בשפת הלקוח</li>
+                <li>עיצוב מקצועי</li>
+                <li>תמונות רלוונטיות</li>
+                <li>כפתורי קריאה לפעולה</li>
+            </ul>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">5</span> התאימו אישית (אופציונלי)</h3>
+            <p>יש לכם Page Builder מובנה שמאפשר לערוך הכל - צבעים, טקסטים, תמונות, מבנה. זה אינטואיטיבי ולא דורש ידע טכני.</p>
+        </div>
+
+        <div class="step">
+            <h3><span class="step-number">6</span> חיבורים טכניים</h3>
+            <p>חברו את:</p>
+            <ul>
+                <li>מערכת הסליקה שלכם</li>
+                <li>טופס איסוף לידים</li>
+                <li>CRM או מערכת דיוור (דרך Webhook)</li>
+            </ul>
+            <p>והדף באוויר!</p>
+        </div>
+
+        <div class="important">
+            <strong>⚠️ חשוב לזכור:</strong> התוצאות תלויות גם בכם. ככל שתשקיעו יותר מחשבה בשלב השאלות, וככל שתכירו טוב יותר את הלקוח שלכם - הדף יהיה חזק יותר. Landy נותן לכם כלי מדהים, אבל אתם צריכים להוביל אותו נכון.
+        </div>
+
+        <h2>למי זה באמת מתאים?</h2>
+        
+        <h3>✓ בעלי עסקים קטנים</h3>
+        <p>שרוצים לבדוק מוצרים חדשים מהר וללא השקעה של אלפי שקלים. במקום לשלם לקופירייטר ומעצב ולחכות שבועיים, יש לכם דף באוויר תוך 15 דקות.</p>
+
+        <h3>✓ סוכנויות פירסום</h3>
+        <p>שצריכות לבנות עשרות דפי נחיתה ללקוחות בחודש. החיסכון בזמן, בכוח אדם ובכסף הוא עצום. במקום צוות שלם על כל דף - אתם יכולים לייצר דפים איכותיים ברגע.</p>
+
+        <h3>✓ משווקי שותפים (Affiliate Marketers)</h3>
+        <p>זה בדיוק בשבילכם! אם אתם משווקים דרך דפי נחיתה - Landy חוסך לכם המון כסף וזמן. במקום לשלם אלפי שקלים על כל דף למוצר חדש שאתם רוצים לקדם, אתם יכולים לבנות דפים ממירים תוך דקות ולבדוק מוצרים חדשים בקלות. בנוסף, הקופי המבוסס על מחקר שפת לקוח של Landy עוזר לכם להמיר טוב יותר - וזה אומר יותר עמלות. אפשר לנהל מספר קמפיינים במקביל, לבדוק מוצרים שונים, ולעשות A/B testing בקלות - הכל בלי להיתקע עם עלויות פיתוח.</p>
+
+        <h3>✓ פרילנסרים ומשווקים</h3>
+        <p>שרוצים למכור דפי נחיתה לבעלי עסקים. הרעיון פשוט: משלמים 27 דולר לחודש ללאנדי, בונים דף תוך 15 דקות, ומוכרים אותו לבעל עסק באלפי שקלים. הרווח לדף הוא משמעותי.</p>
+
+        <h3>✗ למי זה לא מתאים</h3>
+        <p>אם אתם צריכים משהו מאוד מאוד מותאם אישית עם פיתוחים מיוחדים וייחודיים - כנראה שזה לא בשבילכם. Landy מעולה למוצרים סטנדרטיים, אבל לא תחליף למפתח מקצועי לפרויקטים מורכבים.</p>
+
+        <h2>כמה זה עולה?</h2>
+        <p>החבילה הבסיסית מתחילה ב-<strong>27 דולר לחודש</strong>. בשביל ההשוואה - דף נחיתה רגיל עם קופירייטר ומעצב עולה בין 3,000-10,000 ₪. עם לאנדי אתם יכולים לבנות עשרות דפים בחודש באותו מחיר.</p>
+
+        <div class="tip">
+            <strong>💡 איך לחשוב על זה:</strong> אתם למעשה משלמים רק על האחסון ומקבלים את הקופי והעיצוב בחינם. זה כמו שיש לכם קופירייטר ומעצב בעלות סמלית.
+        </div>
+
+        <h2>לסיכום - למה כדאי לנסות</h2>
+        <ul>
+            <li>חיסכון של אלפי שקלים על כל דף</li>
+            <li>חיסכון של ימים ושבועות בזמן</li>
+            <li>אפשרות לבדוק מוצרים חדשים ללא סיכון</li>
+            <li>קופי שמבוסס על מחקר אמיתי של שפת לקוח</li>
+            <li>כל מה שצריך במקום אחד</li>
+        </ul>
+
+        <div class="cta">
+            <h2>מוכנים לנסות?</h2>
+            <p>יש להם ניסיון חינם - תוכלו לראות בעצמכם איך זה עובד ולהחליט אם זה מתאים לכם.</p>
+            <a href="https://did.li/gCt6q" class="cta-button" target="_blank">נסו את Landy בחינם</a>
+        </div>
+
+        <div style="margin-top: 40px; padding-top: 30px; border-top: 2px solid #ecf0f1; color: #7f8c8d;">
+            <p><strong>שאלות?</strong> אשמח לעזור מהניסיון שלי. תכתבו לי או תגיבו במקום שראיתם את המדריך הזה.</p>
+            <p style="margin-top: 20px;">בהצלחה,<br>שחר</p>
+        </div>
+
+        <p class="disclosure">Full disclosure: אני משווק שותפים של Landy, יש לי עמלה אם תירשמו דרך הקישור. אבל אני משתף את זה כי אני באמת משתמש ואני חושב שזה יכול לעזור לכם.</p>
+    </div>
+</body>
+</html>
